@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexarenasf/frontend-sample-app"
+    "url": "https://github.com/simonahumada/Tarea10-MVP-react.git"
   },
   "scripts": {
     "prod": "webpack --mode=production",
