@@ -7,7 +7,7 @@ export const HomePage = () => {
     <div className='page'>
       <h1 className='page__title'>Frontend Sample App</h1>
       <NavBar />
-      <h2>Página de Inicio</h2>
+      <h2>Holas</h2>
     </div>
   )
 }
