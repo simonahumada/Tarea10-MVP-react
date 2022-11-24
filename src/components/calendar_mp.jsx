@@ -8,6 +8,10 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+
 dayjs.extend(isBetweenPlugin);
 
 const CustomPickersDay = styled(PickersDay, {
@@ -33,7 +37,7 @@ const CustomPickersDay = styled(PickersDay, {
 }));
 
 export default function Calendar_mp() {
-  const [value, setValue] = React.useState(dayjs('2022-04-07'));
+  const [value, setValue] = React.useState(dayjs('2022-11-23'));
 
   const renderWeekPickerDay = (date, selectedDates, pickersDayProps) => {
     if (!value) {
@@ -59,19 +63,26 @@ export default function Calendar_mp() {
   };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <StaticDatePicker
-        displayStaticWrapperAs="desktop"
-        label="Week picker"
-        value={value}
-        onChange={(newValue) => {
-          setValue(newValue);
-        }}
-        renderDay={renderWeekPickerDay}
-        renderInput={(params) => <TextField {...params} />}
-        inputFormat="'Week of' MMM d"
-      />
-    </LocalizationProvider>
+    <React.Fragment>
+      <CssBaseline />
+      <Container fixed>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <StaticDatePicker
+            displayStaticWrapperAs="desktop"
+            label="Week picker"
+            value={value}
+            onChange={(newValue) => {
+              setValue(newValue);
+            }}
+            renderDay={renderWeekPickerDay}
+            renderInput={(params) => <TextField {...params} />}
+            inputFormat="'Week of' MMM d"
+          />
+        </LocalizationProvider>
+      </Container>
+    </React.Fragment>
+  
+
   );
 }
 
