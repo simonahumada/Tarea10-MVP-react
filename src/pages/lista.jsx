@@ -3,52 +3,75 @@ import React from 'react'
 import NavBar from '../components/nav_bar'
 
 import Table from '@mui/material/Table';
+import { styled } from '@mui/material/styles';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableCell , { tableCellClasses }from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import Button from '@mui/material/Button';
 
 import Listarows from '../data/data_lista';
 import { Checkbox } from '@mui/material';
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.secondary.dark,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
 
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 export const Lista = () => {
   return (
     <div className='page'>
       
       <NavBar />
-      <h1 className='page__title'>Lista</h1>
+      <h2>Lista</h2>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Producto</TableCell>
-            <TableCell align="right">Gramos&nbsp;(g)</TableCell>
-            <TableCell align="right">Check</TableCell>
+            <StyledTableCell>Producto</StyledTableCell>
+            <StyledTableCell align="right">Gramos&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="right">Check</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {Listarows.map((row) => (
-            <TableRow
+            <StyledTableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <StyledTableCell component="th" scope="row">
                 {row.nombre}
-              </TableCell>
-              <TableCell align="right">{row.gramos}</TableCell>
-                <TableCell align="right">
-                    <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
-                </TableCell>
-            </TableRow>
+              </StyledTableCell>
+              <StyledTableCell align="right">{row.gramos}</StyledTableCell>
+                <StyledTableCell align="right">
+                    <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 15 } }} />
+                </StyledTableCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    <div align="right" className="button-padding-top" >
+        <Button color="secondary" size="medium" variant="contained">Agregar</Button>
+    </div>
+    
     </div>
   )
 }
