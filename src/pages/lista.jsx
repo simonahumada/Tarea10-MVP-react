@@ -1,7 +1,4 @@
-import React from 'react'
-
-import NavBar from '../components/nav_bar'
-
+import * as React from 'react';
 import Table from '@mui/material/Table';
 import { styled } from '@mui/material/styles';
 import TableBody from '@mui/material/TableBody';
@@ -11,9 +8,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-
+import NavBar from '../components/nav_bar';
 import Listarows from '../data/data_lista';
 import { Checkbox } from '@mui/material';
+
+
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -34,8 +34,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
-
+const handleSubmit = (event) => {
+  alert("Elemento comprado");
+};
 export const Lista = () => {
+  
   return (
     <div className='page'>
       
@@ -69,7 +72,7 @@ export const Lista = () => {
       </Table>
     </TableContainer>
     <div align="right" className="button-padding-top" >
-        <Button color="secondary" size="medium" variant="contained">Agregar</Button>
+        <Button onClick={handleSubmit} color="secondary" size="medium" variant="contained">Confirmar</Button>
     </div>
     
     </div>

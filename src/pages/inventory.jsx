@@ -65,7 +65,7 @@ export const Inventory = () => {
   };
 
   const handleSubmit = (event) => {
-    alert(values.nombre);
+    alert("Elemento Agregado");
   };
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -118,12 +118,12 @@ export const Inventory = () => {
             <TextField fullWidth id="standard-basic" label="Cantidad" variant="standard" value={values.gramos} onChange={handleChange('gramos')}/>
           </div>
           <Grid container spacing={2} className="button-padding-top" >
+          <Grid xs={6} display="flex" justifyContent="center" alignItems="center">
+            <Button size="medium" variant="outlined" color='error' onClick={handleClose}>Cancelar</Button>
+            </Grid> 
             <Grid xs={6} display="flex" justifyContent="center" alignItems="center">
             <Button type='submit' size="medium" variant="contained" color='secondary' >Aceptar</Button>  
-            </Grid>
-            <Grid xs={6} display="flex" justifyContent="center" alignItems="center">
-            <Button size="medium" variant="outlined" color='error' onClick={handleClose}>Salir</Button>
-            </Grid>            
+            </Grid>                       
           </Grid>                    
         </Box>
       </Modal>    

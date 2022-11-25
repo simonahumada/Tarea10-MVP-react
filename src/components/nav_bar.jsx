@@ -13,14 +13,26 @@ import MenuItem from '@mui/material/MenuItem';
 import { NavLink, Link } from 'react-router-dom'
 import Icon from '@mui/material/Icon';
 
+import { loadCSS } from 'fg-loadcss';
+
+
 const pages = [{txt:'Inventario',link : '/inventory'}, {txt:'Lista de compra',link:'/shopping-list'}];
 const settings = ['Perfil', 'Cuenta', 'Salir'];
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 
 
 export const NavBar = () => {
+  React.useEffect(() => {
+    const node = loadCSS(
+      'https://use.fontawesome.com/releases/v5.14.0/css/all.css',
+      // Inject before JSS
+      document.querySelector('#font-awesome-css') || document.head.firstChild,
+    );
+
+    return () => {
+      node.parentNode.removeChild(node);
+    };
+  }, []);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -39,7 +51,7 @@ export const NavBar = () => {
     setAnchorElUser(null);
   };
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="secondary">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -69,7 +81,7 @@ export const NavBar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-
+              <Icon baseClassName="fas" className="fa-solid fa-bars" />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -98,11 +110,12 @@ export const NavBar = () => {
               ))}
             </Menu>
           </Box>
+          
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -116,7 +129,7 @@ export const NavBar = () => {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box alignItems="flex-end" justifyContent="flex-end" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Link to={page.link}>
               <Button
