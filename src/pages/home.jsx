@@ -8,7 +8,8 @@ export const HomePage = () => {
       <h1 className='page__title'>Frontend Sample App</h1>
       <NavBar />
       <h2>Holas</h2>
-    </div>
+      <h2>Página de Inicio</h2>
+      </div>
   )
 }
 

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export const NavBar = () => {
   return (
-    <nav className='nav-bar'>
+    <nav className='nav-bar'>      
       <NavLink
         className={({ isActive }) => `nav-bar__link ${isActive ? 'nav-bar__link--active' : ''}`}
         to='/'
@@ -12,9 +12,15 @@ export const NavBar = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) => `nav-bar__link ${isActive ? 'nav-bar__link--active' : ''}`}
-        to='/internal'
+        to='/inventory'
       >
-        Página Interna
+        Inventario
+      </NavLink>
+      <NavLink
+        className={({ isActive }) => `nav-bar__link ${isActive ? 'nav-bar__link--active' : ''}`}
+        to='/toBuy'
+      >
+        Lista de compras
       </NavLink>
     </nav>
   )
